@@ -1,7 +1,0 @@
-{
-	"editor.formatOnSave": false,
-	"editor.tabSize": 2,
-	"editor.detectIndentation": false,
-	"editor.insertSpaces": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
-}
