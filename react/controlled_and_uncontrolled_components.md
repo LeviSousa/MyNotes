@@ -32,36 +32,36 @@ A `ref` can be used to get form values from the DOM. The value will live under `
 
 ```javascript
 class NameForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { value: '' };
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-	handleChange(event) {
-		this.setState({ value: event.target.value });
-	}
-	handleSubmit(event) {
-		alert('A name was submitted: ' + this.state.value);
-		event.preventDefault();
-	}
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
 
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>
-					Name:
-					<input
-						type='text'
-						value={this.state.value}
-						onChange={this.handleChange}
-					/>
-				</label>
-				<input type='submit' value='Submit' />
-			</form>
-		);
-	}
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input
+            type='text'
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
+        <input type='submit' value='Submit' />
+      </form>
+    );
+  }
 }
 ```
 
@@ -93,28 +93,28 @@ class NameForm extends React.Component {
 
 ```javascript
 class NameForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.input = React.createRef();
-	}
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+  }
 
-	handleSubmit(event) {
-		alert('A name was submitted: ' + this.input.current.value);
-		event.preventDefault();
-	}
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.current.value);
+    event.preventDefault();
+  }
 
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<label>
-					Name:
-					<input type='text' ref={this.input} />{' '}
-				</label>
-				<input type='submit' value='Submit' />
-			</form>
-		);
-	}
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type='text' ref={this.input} />{' '}
+        </label>
+        <input type='submit' value='Submit' />
+      </form>
+    );
+  }
 }
 ```
 
