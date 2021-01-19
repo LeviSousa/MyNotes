@@ -1,6 +1,6 @@
 # On Controlled and Uncontrolled Components
 
-Controlled and uncontrolled components have their main difference in one thing: who handles the changes of a form's input.
+[Controlled](https://reactjs.org/docs/forms.html#controlled-components) and [Uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) components have their main difference in one thing: who handles the changes of a form's input.
 
 In a Controlled components, React state drives the input's value. The DOM, on the other hand, handles the form changes in Uncontrolled components. The former uses the `value` prop to set the input form element's value, while the latter uses `defaultValue`.
 
@@ -24,7 +24,7 @@ Passing an `undefined` or `null` value as a component's `value` prop will result
 
 ## Getting the current value from an Uncontrolled component
 
-A `ref` can be used to get form values from the DOM. The value will live under `current.value`.
+A `ref` can be used to get form values [from the DOM](https://reactjs.org/docs/refs-and-the-dom.html). The value will live under `current.value`.
 
 ## Examples
 
@@ -32,36 +32,36 @@ A `ref` can be used to get form values from the DOM. The value will live under `
 
 ```javascript
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+	constructor(props) {
+		super(props);
+		this.state = { value: '' };
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+	handleChange(event) {
+		this.setState({ value: event.target.value });
+	}
+	handleSubmit(event) {
+		alert('A name was submitted: ' + this.state.value);
+		event.preventDefault();
+	}
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type='text'
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
-    );
-  }
+	render() {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				<label>
+					Name:
+					<input
+						type='text'
+						value={this.state.value}
+						onChange={this.handleChange}
+					/>
+				</label>
+				<input type='submit' value='Submit' />
+			</form>
+		);
+	}
 }
 ```
 
@@ -93,35 +93,27 @@ class NameForm extends React.Component {
 
 ```javascript
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.input = React.createRef();
-  }
+	constructor(props) {
+		super(props);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.input = React.createRef();
+	}
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.input.current.value);
-    event.preventDefault();
-  }
+	handleSubmit(event) {
+		alert('A name was submitted: ' + this.input.current.value);
+		event.preventDefault();
+	}
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type='text' ref={this.input} />{' '}
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
-    );
-  }
+	render() {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				<label>
+					Name:
+					<input type='text' ref={this.input} />{' '}
+				</label>
+				<input type='submit' value='Submit' />
+			</form>
+		);
+	}
 }
 ```
-
-## References
-
-[React Documentation on Controlled components](https://reactjs.org/docs/forms.html#controlled-components)
-
-[React Documentation on Uncontrolled components](https://reactjs.org/docs/uncontrolled-components.html)
-
-[React Documentation on Refs](https://reactjs.org/docs/refs-and-the-dom.html)
