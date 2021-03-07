@@ -1,0 +1,20 @@
+Initial state of useState hook
+So, passing a function to useState will recalculate that same function every time the hook (or component) containing the useState is called
+If the initial state of useState is the result of a function, that should be calculated previously (outside the hook)
+Alternatively, we can useState(() => func())
+Understand why!
+
+Read guide on refs
+https://reactjs.org/docs/refs-and-the-dom.html
+
+Understand order of execution of hooks
+
+Child components that get passed a callback can be re-rendered because the reference to the callback has changed
+When would this happen and why?
+To solve this, useCallback can be used
+
+"useEffect is not called until the "render" function has been called"
+
+Understand why to use useCallback and useMemo
+When does a value or function get re-defined?
+When does it make sense to use those two hooks?
