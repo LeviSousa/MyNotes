@@ -85,6 +85,8 @@ console.log((x => x * 2))
 // This will log 'function', as expected
 ```
 
+Note that invoking `typeof(null)` will return "object" instead of the expected "null". That is due to an [old bug in Javascript](https://stackoverflow.com/questions/18808226/why-is-typeof-null-object).
+
 There are no other fundamental value types, besides the nine listed above. Arrays are objects, as are dates and regular expressions, for instance.
 
 A common misconception in Javascript is that *"everything is an object"*. But that is not true, although it may seem like it. When `"hi".toUpperCase()` is invoked, `"hi"` is not an object. Rather, javascript creates a wrapper object around it and then discards it.
