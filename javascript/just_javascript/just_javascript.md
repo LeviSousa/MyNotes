@@ -9,7 +9,7 @@ Dan Abramov works for Facebook as part of the React Core team. He also developed
 Maggie Appleton is an Art Director, Designer and Anthropologis at egghead.io.
 
 # 01. Mental Models
-<sub><sup>Purpose of the course - What is a mental model - How mental models may not correspond to reality - Reading code fast, and slow</sup></sub>
+*Purpose of the course - What is a mental model - How mental models may not correspond to reality - Reading code fast, and slow*
 
 Given the following snippet, what are the values of `a` and `b`?
 
@@ -48,3 +48,43 @@ function duplicateSpreadsheet(original) {
 }
 ```
 In the `duplicateSpreadsheet` function above, we may not notice that the original file's name is being changed to "Copy of ${name}" when we read it "fast". Knowing that a bug - change of the original name - exists, switches our mode of reading to be "slow". It is then that our Mental Models will allow us to correctly (or incorrectly, or not at all, dependending on its accuracy) identify the source and cause of the bug.
+
+# 02. The Javascript Universe
+*The two kinds of values - The nine types of values - Checking the type of a value*
+
+In Javascript, there are two **kinds** of values: **Primitive Values** and **Objects and Functions**.
+
+The former - **primitive values** - include numbers and strings. **They can't be affected by anything in the code.**
+
+The latter - **objects and functions** - include arrays, objects and functions. **Code can manipulate them.**
+
+Adding to the **kinds** of values, Javascript also has **Expressions**. These are operations that result in a value, like `2 + 2` or `Hello ${name}!`.
+
+The two **kinds** of values are distributed among nine fundamental **Types**:
+
+- *Primitive Values*
+  - **Undefined** - used for unintentionally missing values
+  - **Null** - used for intentionally missing values
+  - **Booleans** - used for logic operations
+  - **Numbers** - used for math calculations
+  - **Strings** - used for text
+  - **Symbols** - used to hide implementation details
+  - **BigInts** - used for math on big numbers
+- *Objects and Functions*
+  - **Objects** - used to group related data and code
+  - **Functions** - used to refer to code
+
+To check the type of a value, Javascript gives the `typeof` function. It can be invoked without parens, but, when done so, they may lead to ambiguity:
+
+```javascript
+console.log(x => x * 2)
+// This will result in a "Uncaught SyntaxError: invalid arrow-function arguments"
+// error being thrown.
+
+console.log((x => x * 2))
+// This will log 'function', as expected
+```
+
+There are no other fundamental value types, besides the nine listed above. Arrays are objects, as are dates and regular expressions, for instance.
+
+A common misconception in Javascript is that *"everything is an object"*. But that is not true, although it may seem like it. When `"hi".toUpperCase()` is invoked, `"hi"` is not an object. Rather, javascript creates a wrapper object around it and then discards it.
