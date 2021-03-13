@@ -90,3 +90,38 @@ Note that invoking `typeof(null)` will return "object" instead of the expected "
 There are no other fundamental value types, besides the nine listed above. Arrays are objects, as are dates and regular expressions, for instance.
 
 A common misconception in Javascript is that *"everything is an object"*. But that is not true, although it may seem like it. When `"hi".toUpperCase()` is invoked, `"hi"` is not an object. Rather, javascript creates a wrapper object around it and then discards it.
+
+# 03. Values and Variables
+*Immutability of primitive values - Definition of Variable - Assignment of values to variables - Variables as expressions when invoking functions and assigning other variables*
+
+As stated in lesson 02, Primitive Values can't be changed. They are immutable. Javascript will silently refuse, or error, the changing attempt.
+
+Primitive values can't also have properties be set on them (*e.g.* `"h1".length = 3` will not work).
+
+A new concept is introduced: the **Variable**. These are *declared* and, after that, can be *assigned* to values. After the initial assignment, variables can be assigned to other values.
+
+```javascript
+let x // variable "x" is declared
+x = 10 // variable "x" is assigned to the value 10
+x = 20 // variable "x" is re-assigned to the value 20
+```
+
+**An Assignment is, thus, a "relationship"**. On that relationship:
+- the left side **must** be a variable
+- the right side **must** be an expression. When the expression resolves to a primitive value, it is called a *Literal*.
+
+When invoking a function, where the parameter is a variable (*i.e.* `console.log(x)`), it is not, in fact, the variable that is "passed in". *Functions are invoked with values*. When a variable is used, the function is **invoked with the current value assigned to the variable**. At this point, a variable also serves as an expression.
+
+The example below demonstrates this:
+
+```javascript
+function double(x) {
+  x = x * 2;
+}
+
+let money = 10;
+double(money); // here, "double" will retrieve the value assigned to "money"
+console.log(money); // will log 10, as "money" was not passed to "double"
+```
+
+As variables always point to values, `let y = x` means to assign to "y" the current value assigned "x" - and not to the variable "x".
