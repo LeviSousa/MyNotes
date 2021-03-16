@@ -125,3 +125,52 @@ console.log(money); // will log 10, as "money" was not passed to "double"
 ```
 
 As variables always point to values, `let y = x` means to assign to "y" the current value assigned "x" - and not to the variable "x".
+
+# 04. Counting the Values (Part 1)
+*The values of undefined - The values of null - The values of boolean - The values of number - Floating-point math and limited precision - Floating-point math special numbers*
+
+Part 04 of this tutorial lists and describres the values that exist in each Value Type.
+
+## Undefined
+
+The Undefined type only has one possible value: `undefined`. Despite its name, **it is a value** and, as stated in Lesson 02, it conventionally represents *unintentionally missing values*.
+
+However, the `undefined` value must be distinguished from a variable not yet defined - as what happens when accessing a value before its declaration. That will result in a `ReferenceError` as per example below:
+
+```javascript
+console.log(undefinedVar) // will log ReferenceError
+let undefinedVar
+console.log(undefinedVar.a) // will log TypeError
+```
+
+As observed in the example, properties cannot be read from `undefined` values.
+
+## Null
+
+Null type also only has one value: `null`. Also, like `undefined`, it will throw a `TypeError` if a property is attempted to be read from it. It represent an *intentionally missing value*, as per convention.
+
+Also, as stated in Lesson 02, `console.log(typeof(null))` will log `object`. But this is a bug in Javascript, and `null` is its own Type.
+
+## Boolean
+
+The Boolean type has two possible values: `false` and `true`.
+
+## Number
+
+The Number type represent numerical values. However, when used by Javascript, they are somewhat different from the normal, human-usable, numbers. That is because Javascript applies *floating-point math* and it considers numbers to have *limited precision*.
+
+When a number is written in the Javascript code, Javascript looks for the closest number that it knows about (from a pool of 18 quintillion numbers). *For most integers*, the number Javascript finds is exactly equal to the one that was written. However, as the written number distances itself from 0 - whether positive or negative - Javascript will find less exact values (losing precision).
+
+The primitive wrapper object [Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) provides a `MAX_SAFE_INTEGER` and a `MIN_SAFE_INTEGER`, representing the values that, between both, are exact in Javascript.
+
+Floating points, however, *are not exact for Javascript*. Even 0.1 is not. The practical consequence of this is the fact that 0.1 + 0.2 !== 0.3, but rather 0.1 + 0.2 === 0.30000000000000004. This may be a source of bugs.
+
+Floating-point math, however, works well (in the human sense) most of the time. As such, we rarely have to worry about it.
+
+There are also some particular values resulting from adopting floating-point math:
+- `Infinity`
+- `-Infinity`
+- `NaN`
+- `-0`
+
+They all have type of `number`. Of these [`NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) - standing for `Not-A-Number` is particulary curious as, despite its name, it is a number for Javascript. It represents *invalid numbers*.
