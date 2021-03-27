@@ -174,3 +174,53 @@ There are also some particular values resulting from adopting floating-point mat
 - `-0`
 
 They all have type of `number`. Of these [`NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) - standing for `Not-A-Number` is particulary curious as, despite its name, it is a number for Javascript. It represents *invalid numbers*.
+
+# 05. Counting the Values (part 2)
+*The values of BigInts - The values of Strings - How to declare Symbols - Creation an destruction of objects and functions - Functions as objects - Call Expression*
+
+## BigInts
+
+BigInts purpose is to represent very large numbers, as a regular `number` can't perform that task with accuracy. There is no maximum value for a BigInt, as it can represent any large number (at a speed and memory cost).
+
+As this type is a fairly recent addition to Javascript, [it may not work in old browsers](https://caniuse.com/?search=bigint).
+
+
+## Strings
+
+Strings represent text and they may be written using double quotes (`""`), single quotes (`''`) or backticks (``).
+
+Although Strings are not objects, they are provided with properties. These may, for example, get the length of the string (`.length`) or get the character at a given position (`[6]`). Since Strings are primitive, however, these properties can't be used to change its value (*e.g.* `"a string"[3] = "b"` will not change the string).
+
+## Symbols
+
+Symbols are a recent addition to Javascript, and they are declared by using `Symbol()`. They are skipped during this module.
+
+## Objects
+
+Objects include non-primitive values, like objects, arrays, RegExps and dates. As they are not primitive, objects are, by default, mutable. Their properties can be accessed via a dot ("dot notation") or brackets ("bracket notation").
+
+For the purposes of the mental model, proposed for this course, objects are infinitely created upon their declaration (as opposed to primitive values which - again, for the purposes of this course - already exist). However, although they may be created, objects cannot be destroyed by running code.
+
+Notwithstanding, Javascript is a garbage-collected language, and it will eventually destroy an object if there is no way in the code to reach it. When this happens, however, is not guaranteed.
+
+## Functions
+
+Functions are not primitives. As with objects, a new function is created every time it is declared, *even if in literal form*.
+
+```javascript
+for (let i = 1; i < 7; i++) {
+  console.log(6) // here, the same value is used in every iteration
+}
+
+for (let i = 1; i < 7; i++) {
+  console.log({}) // here, a new empty object is created in every iteration
+}
+
+for (let i = 1; i < 7; i++) {
+  console.log(function () {}) // here, a new function is created in every iteration
+}
+```
+
+Technically, Functions are Objects in Javascript but, crucially, they have unique capabilities. As objects, they can be re-assigned to a new variable (keeping the previous assignment still valid). However, as functions, they can be called, by invoking its name followed by parens. This is called a "call expression".
+
+When a call expression is run, Javascript will, in turn, run the code of the function and retrieve the value returned from it.
