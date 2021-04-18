@@ -14,6 +14,28 @@ To run a ruby file:
 $ ruby ruby_file.rb
 ```
 
+## Strings
+
+Strings can be defined using single or double quotes. However, only the latter allow for string interpolation.
+
+```ruby
+# String interpolation
+"My first name is #{first_name}"
+```
+
+## Variables
+
+To declare a variable in Ruby, it is just required that the variable name and its value be written. Variables can, then, be overridden.
+
+```ruby
+count = 10 # this declares the variable "count"
+count = 20 # this overrides the variable "count"
+```
+
+## Objects
+
+To get all the methods of an object, `methods` can be called directly on that same object. This will work with primitives as well, since they are objects (everything in Ruby is).
+
 ## Methods
 
 Methods are defined starting with the `def` keyword, and ending with the `end` keyword.
@@ -24,7 +46,23 @@ def method_name(arg1, arg2)
 end
 ```
 
-## Output
+If a method does not have arguments, then it can be invoked without using empty parentheses `()`. This is also possible when method chaining:
+
+```ruby
+10.to_s.class
+```
+
+## Input/Output
+
+### Getting input from console
+
+To get input from console:
+
+```ruby
+user_input = gets.chomp
+```
+
+`gets.chomp` will always return a string.
 
 ### Logging
 
