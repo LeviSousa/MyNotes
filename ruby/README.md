@@ -78,7 +78,7 @@ Three possible ways to log a value to output (usually console) are `p`, `puts` a
 
 (More info can be found here: https://www.rubyguides.com/2018/10/puts-vs-print/)
 
-## Miscelaneous notes
+## Miscellaneous notes
 
 ### Comments
 
