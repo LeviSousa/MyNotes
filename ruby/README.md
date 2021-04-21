@@ -23,6 +23,16 @@ Strings can be defined using single or double quotes. However, only the latter a
 "My first name is #{first_name}"
 ```
 
+## Numbers
+
+Integers have a `to_f` method, that can be invoked, returning a float representation. However, if the object cannot be converted to a float, it will return `0`. The same happens on `to_i` (converting to an integer).
+
+Another useful method is the `.times`, which takes a block of code:
+
+```ruby
+20.times { print '-' }
+```
+
 ## Variables
 
 To declare a variable in Ruby, it is just required that the variable name and its value be written. Variables can, then, be overridden.
@@ -51,6 +61,16 @@ If a method does not have arguments, then it can be invoked without using empty 
 ```ruby
 10.to_s.class
 ```
+
+## Equality
+
+To test equality between objects, a lot of operations can be performed:
+
+- `==` will return `true` if both objects are the same. It is typically overridden to provide class-specific meaning`
+- `.equal?` works as the default `==`, but should never be overridden
+- `.eql?` will return `true` if both objects' hashes are equal. So, if `eql?` is overriden in an object, so too should its `.hash`.
+
+Official description can be found [here](https://ruby-doc.org/core-3.0.1/Object.html#method-i-eql-3F) and, for `===` specific, [here](https://ruby-doc.org/core-3.0.1/Object.html#method-i-3D-3D-3D).
 
 ## Input/Output
 
