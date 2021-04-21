@@ -2,9 +2,9 @@
 
 Official website: https://www.ruby-lang.org/en/
 
-Ruby is a programming language. It is purely Object-Oriented, meaning everything is an object.
+Ruby is a programming language. It is purely Object-Oriented, meaning everything is an object. Manipulations on those same objects also return other objects.
 
-Everything method in Ruby also returns something. If a method does not return anything explicitly, then `nil` is returned.
+Every method in Ruby also returns something. If a method does not return anything explicitly, then `nil` is returned.
 
 ## Running Ruby code
 
@@ -61,6 +61,8 @@ If a method does not have arguments, then it can be invoked without using empty 
 ```ruby
 10.to_s.class
 ```
+
+The last evaluated expression in a method will be implictly returned.
 
 ## Equality
 
