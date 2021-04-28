@@ -16,12 +16,14 @@ $ ruby ruby_file.rb
 
 ## Strings
 
-Strings can be defined using single or double quotes. However, only the latter allow for string interpolation.
+Strings can be defined using single or double quotes. However, only the latter allows for string interpolation.
 
 ```ruby
 # String interpolation
 "My first name is #{first_name}"
 ```
+
+Single quoted strings are lighter, but also do less. Besides not being able to do string interpolation, single quoted strings can't also escape special characters (_e.g._ `/n`).
 
 ## Numbers
 
@@ -42,9 +44,72 @@ count = 10 # this declares the variable "count"
 count = 20 # this overrides the variable "count"
 ```
 
-## Objects
+Variables' naming in Ruby has the following rules:
+- Starting with lower case letter or underscore:
+    - Local variables
+    - Method parameters
+    - Method names
+- Starting with an @ sign:
+    - Instance variables
+- Starting with an upper case letter (and separating words with capitalization):
+    - Class names
+    - Module names
+    - Constants (here `SCREAMING_SNAKE_CASE`)
 
-To get all the methods of an object, `methods` can be called directly on that same object. This will work with primitives as well, since they are objects (everything in Ruby is).
+## Symbols
+
+`Symbols` are most often used when naming method parameters and looking up values in hashes. They are defined by a `:` next to its name. Example:
+
+```ruby
+# :action and :id are naming paramets, while [:id] is reading from an hash
+redirect_to :action => 'edit', :id => params[:id]
+
+# however, the most common form is:
+redirect_to action: 'edit', product: product.id
+```
+
+## Arrays
+
+`Arrays` are indexed collections, where the key is an integer, indicating the index on the array, starting with `0`.
+
+Reading from an `Array` is more efficient than reading from an `Hash`. However, the former is less flexible to work with.
+
+Appending an object to an `Array` can be done by using `<<`:
+
+```ruby
+an_array << appending_object
+```
+
+There are two ways to create an `Array` of strings:
+
+```ruby
+animals = ['ant', 'bee', 'cat', 'dog', 'elk']
+
+# However, the most idiomatic way is:
+animals = %w{ant bee cat dog elk}
+```
+
+## Hashes
+
+As with `Arrays`, an `Hash` is an indexed collection. However, any object can be a key, even `Symbols`, which the most frequent choice.
+
+```ruby
+instrument_section = {
+  :cello => 'string',
+  :clarinet => 'woodwind'
+}
+
+# As seen in the Symbols section, this can be written as:
+instrument_section = {
+  cello: 'string',
+  clarinet: 'woodwind
+}
+```
+
+Reading a non-existing key from an `Hash` will return `nil`.
+## Classes
+
+
 
 ## Methods
 
@@ -63,6 +128,14 @@ If a method does not have arguments, then it can be invoked without using empty 
 ```
 
 The last evaluated expression in a method will be implictly returned.
+
+When invoking a method with an `Hash`, the curly braces - of the `Hash` - can be omitted only if the last parameter of the method is an `Hash`.
+
+## Objects
+
+To instantiate an object from a `Class`, the `.new` method is invoked from that `Class`.
+
+To get all the methods of an object, `methods` can be called directly on that same object. This will work with primitives as well, since they are objects (everything in Ruby is).
 
 ## Equality
 
